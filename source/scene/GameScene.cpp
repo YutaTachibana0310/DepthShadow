@@ -133,7 +133,6 @@ void GameScene::Draw()
 	depthMap->End();
 
 	pDevice->SetTexture(1, depthMap->GetTexture());
-	effect->CommitChanges();
 	//’Êí•`‰æ
 	for (auto&& obj : object)
 	{

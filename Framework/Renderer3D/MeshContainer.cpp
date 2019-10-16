@@ -64,7 +64,7 @@ void MeshContainer::Draw()
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
 	//マテリアル退避
-	pDevice->GetMaterial(&matDef);
+	//pDevice->GetMaterial(&matDef);
 
 	for (DWORD i = 0; i < materialNum; i++)
 	{
@@ -79,7 +79,7 @@ void MeshContainer::Draw()
 	}
 
 	//マテリアル復元
-	pDevice->SetMaterial(&matDef);
+	//pDevice->SetMaterial(&matDef);
 }
 
 /**************************************

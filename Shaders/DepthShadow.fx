@@ -67,10 +67,10 @@ float4 PS(VS_OUTPUT In) : COLOR0
 	//Zバッファから深度値を取得
 	float d = tex2Dproj(tex1, In.lightUV).r;
 
-	if (In.depth.x < d + 0.005f)
+	if (In.depth.x > d + 0.005f)
 	{
-		//Out.rgb *= 0.5f;
-		Out.rgb = float3(1.0f, 1.0f, 1.0f) - Out.rgb;
+		Out.rgb *= 0.1f;
+		//Out.rgb = float3(1.0f, 1.0f, 1.0f) - Out.rgb;
 	}
 
 	return Out;

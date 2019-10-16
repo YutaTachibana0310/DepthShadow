@@ -42,7 +42,7 @@ void DepthMap::Init(UINT width, UINT height)
 	surface->GetDesc(&desc);
 	UINT depthWidth = desc.Width;
 	UINT depthHeight = desc.Height;
-	pDevice->CreateDepthStencilSurface(depthWidth, depthHeight, D3DFMT_D16, D3DMULTISAMPLE_NONE, 0, 0, &depthBuffer, 0);
+	pDevice->CreateDepthStencilSurface(depthWidth, depthHeight, D3DFMT_D16, desc.MultiSampleType, desc.MultiSampleQuality, 0, &depthBuffer, 0);
 }
 
 /**************************************

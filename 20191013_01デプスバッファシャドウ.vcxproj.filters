@@ -83,6 +83,7 @@
     <ClCompile Include="Framework\Effect\EffectResource.cpp" />
     <ClCompile Include="Framework\Effect\DepthShadowEffect.cpp" />
     <ClCompile Include="source\TestField.cpp" />
+    <ClCompile Include="Framework\Effect\DepthRendererEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
@@ -179,8 +180,10 @@
     <ClInclude Include="Framework\Effect\EffectResource.h" />
     <ClInclude Include="source\TestField.h" />
     <ClInclude Include="Framework\Effect\DepthShadowEffect.h" />
+    <ClInclude Include="Framework\Effect\DepthRendererEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\DepthRenderer.fx" />
+    <FxCompile Include="Shaders\DepthShadow.fx" />
   </ItemGroup>
 </Project>

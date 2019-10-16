@@ -15,6 +15,7 @@
 ***************************************/
 class BoardPolygon;
 class DepthShadowEffect;
+class DepthRendererEffect;
 
 /**************************************
 ƒNƒ‰ƒX’è‹`
@@ -31,6 +32,7 @@ public:
 private:
 	BoardPolygon *polygon;
 	DepthShadowEffect *effect;
+	DepthRendererEffect *depthRenderer;
 };
 
 #endif

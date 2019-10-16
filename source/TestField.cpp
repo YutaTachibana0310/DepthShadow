@@ -7,6 +7,7 @@
 #include "TestField.h"
 #include "../Framework/Renderer3D/BoardPolygon.h"
 #include "../Framework/Effect/DepthShadowEffect.h"
+#include "../Framework/Effect/DepthRendererEffect.h"
 #include "../Framework/Tool/DebugWindow.h"
 
 /**************************************
@@ -25,12 +26,14 @@ TestField::TestField()
 	transform->Rotate(90.0f, Vector3::Right);
 
 	effect = new DepthShadowEffect();
+	depthRenderer = new DepthRendererEffect();
 }
 
 TestField::~TestField()
 {
 	SAFE_DELETE(polygon);
 	SAFE_DELETE(effect);
+	SAFE_DELETE(depthRenderer);
 }
 
 void TestField::Draw()
@@ -44,7 +47,7 @@ void TestField::Draw()
 	effect->SetWorldMatrix(transform->GetMatrix());
 
 	effect->Begin(0, 0);
-	effect->BeginPass(1);
+	effect->BeginPass(0);
 	polygon->Draw();
 	effect->EndPass();
 	effect->End();
@@ -56,11 +59,11 @@ void TestField::Draw()
 
 void TestField::DrawDepth()
 {
-	effect->SetWorldMatrix(transform->GetMatrix());
+	depthRenderer->SetWorldMatrix(transform->GetMatrix());
 	
-	effect->Begin(0, 0);
-	effect->BeginPass(0);
+	depthRenderer->Begin(0, 0);
+	depthRenderer->BeginPass(0);
 	polygon->Draw();
-	effect->EndPass();
-	effect->End();
+	depthRenderer->EndPass();
+	depthRenderer->End();
 }

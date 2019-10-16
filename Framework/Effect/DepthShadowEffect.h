@@ -30,16 +30,18 @@ public:
 	void SetLigjtViewMatrix(const D3DXMATRIX& mtx);
 	void SetLightProjectionMatrix(const D3DXMATRIX& mtx);
 	void SetLightDirection(const D3DXVECTOR3& dir);
-	void SetDepthMap(LPDIRECT3DTEXTURE9 depthMap);
 
 protected:
-	D3DXHANDLE hWorldMtx;
-	D3DXHANDLE hViewMtx;
-	D3DXHANDLE hProjectionMtx;
-	D3DXHANDLE hLightViewMtx;
-	D3DXHANDLE hLightProjectionMtx;
+	D3DXHANDLE hMtxWVP;
+	D3DXHANDLE hMtxLWVP;
+	D3DXHANDLE hMtxLWVPT;
 	D3DXHANDLE hLightDir;
-	D3DXHANDLE hDepthMap;
+
+	static D3DXMATRIX mtxView;
+	static D3DXMATRIX mtxProjection;
+	static D3DXMATRIX mtxLightView;
+	static D3DXMATRIX mtxLightProjection;
+	static D3DXMATRIX mtxTexture;
 };
 
 #endif

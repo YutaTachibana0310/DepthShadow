@@ -9,6 +9,7 @@
 #include "../Framework/Resource/ResourceManager.h"
 #include "../Framework/Renderer3D/MeshContainer.h"
 #include "../Framework/Effect/DepthShadowEffect.h"
+#include "../Framework/Effect/DepthRendererEffect.h"
 
 /**************************************
 グローバル変数
@@ -21,12 +22,14 @@ TestObject::TestObject()
 	ResourceManager::Instance()->GetMesh("Test", mesh);
 
 	effect = new DepthShadowEffect();
+	depthRenderer = new DepthRendererEffect();
 }
 
 TestObject::~TestObject()
 {
 	SAFE_DELETE(mesh);
 	SAFE_DELETE(effect);
+	SAFE_DELETE(depthRenderer);
 }
 
 void TestObject::Draw()
@@ -35,7 +38,7 @@ void TestObject::Draw()
 	effect->SetWorldMatrix(transform->GetMatrix());
 
 	effect->Begin(0, 0);
-	effect->BeginPass(1);
+	effect->BeginPass(0);
 	mesh->Draw();
 	effect->EndPass();
 	effect->End();
@@ -47,26 +50,11 @@ void TestObject::Draw()
 
 void TestObject::DrawDepth()
 {
-	effect->SetWorldMatrix(transform->GetMatrix());
+	depthRenderer->SetWorldMatrix(transform->GetMatrix());
 
-	effect->Begin(0, 0);
-	effect->BeginPass(0);
+	depthRenderer->Begin(0, 0);
+	depthRenderer->BeginPass(0);
 	mesh->Draw();
-	effect->EndPass();
-	effect->End();
-}
-
-/**************************************
-変換行列取得処理
-***************************************/
-D3DXMATRIX TestObject::GetMatrix()
-{
-	D3DXMATRIX mtxWorld = transform->GetMatrix();
-	D3DXMATRIX mtxView = Camera::MainCamera()->GetViewMtx();
-	D3DXMATRIX mtxProj = Camera::MainCamera()->GetProjectionMtx();
-
-	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxView);
-	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxProj);
-
-	return mtxWorld;
+	depthRenderer->EndPass();
+	depthRenderer->End();
 }

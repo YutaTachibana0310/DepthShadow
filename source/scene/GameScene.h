@@ -19,6 +19,7 @@ class TestObject;
 class TestField;
 class DepthMap;
 class DepthShadowEffect;
+class DepthRendererEffect;
 
 /**************************************
 ƒNƒ‰ƒX’è‹`
@@ -39,6 +40,7 @@ private:
 
 	DepthMap *depthMap;
 	DepthShadowEffect *effect;
+	DepthRendererEffect *depthRenderer;
 };
 
 #endif

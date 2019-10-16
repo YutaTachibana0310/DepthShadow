@@ -68,11 +68,11 @@ void MeshContainer::Draw()
 
 	for (DWORD i = 0; i < materialNum; i++)
 	{
-		//テクスチャの設定
-		pDevice->SetTexture(0, textures[i]);
+		////テクスチャの設定
+		//pDevice->SetTexture(0, textures[i]);
 
-		//マテリアル設定
-		pDevice->SetMaterial(&materials[i]);
+		////マテリアル設定
+		//pDevice->SetMaterial(&materials[i]);
 
 		//描画
 		mesh->DrawSubset(i);

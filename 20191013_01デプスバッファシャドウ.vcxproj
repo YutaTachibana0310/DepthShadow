@@ -133,6 +133,7 @@
     <ClCompile Include="Framework\Core\GameObject.cpp" />
     <ClCompile Include="Framework\Core\SceneManager.cpp" />
     <ClCompile Include="Framework\Core\Transform.cpp" />
+    <ClCompile Include="Framework\Effect\DepthRendererEffect.cpp" />
     <ClCompile Include="Framework\Effect\DepthShadowEffect.cpp" />
     <ClCompile Include="Framework\Input\Gamepad.cpp" />
     <ClCompile Include="Framework\Input\input.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="Framework\Core\SceneManager.h" />
     <ClInclude Include="Framework\Core\Transform.h" />
     <ClInclude Include="Framework\Core\Utility.h" />
+    <ClInclude Include="Framework\Effect\DepthRendererEffect.h" />
     <ClInclude Include="Framework\Effect\DepthShadowEffect.h" />
     <ClInclude Include="Framework\Input\Gamepad.h" />
     <ClInclude Include="Framework\Input\input.h" />
@@ -304,6 +306,12 @@
     <FxCompile Include="Shaders\DepthRenderer.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">2.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Shaders\DepthShadow.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">2.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">2.0</ShaderModel>
     </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

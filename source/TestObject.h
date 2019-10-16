@@ -15,6 +15,7 @@
 ***************************************/
 class MeshContainer;
 class DepthShadowEffect;
+class DepthRendererEffect;
 
 /**************************************
 ƒNƒ‰ƒX’è‹`
@@ -27,11 +28,11 @@ public:
 
 	void Draw();
 	void DrawDepth();
-	D3DXMATRIX GetMatrix();
 
 private:
 	MeshContainer *mesh;
 	DepthShadowEffect *effect;
+	DepthRendererEffect *depthRenderer;
 };
 
 #endif

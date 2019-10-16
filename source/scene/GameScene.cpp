@@ -11,6 +11,7 @@
 #include "../../Framework/Renderer3D/BoardPolygon.h"
 #include "../../Framework/Shadow/DepthMap.h"
 #include "../../Framework/Effect/DepthShadowEffect.h"
+#include "../../Framework/Effect/DepthRendererEffect.h"
 #include "../TestField.h"
 
 /**************************************
@@ -33,6 +34,7 @@ void GameScene::Init()
 	field = new TestField();
 	
 	effect = new DepthShadowEffect();
+	depthRenderer = new DepthRendererEffect();
 
 	const float Offset = 10.0f;
 	const float Scale = 0.2f;
@@ -60,8 +62,6 @@ void GameScene::Init()
 	SAFE_RELEASE(tmpSuf);
 
 	depthMap->Init(width, height);
-
-	effect->SetDepthMap(depthMap->GetTexture());
 }
 
 /**************************************
@@ -110,7 +110,7 @@ void GameScene::Draw()
 		500.0f);
 
 	D3DXMatrixLookAtLH(&lightView, 
-		&(normalizeLight * -50.0f), 
+		&(normalizeLight * -100.0f), 
 		&D3DXVECTOR3(0.0f, 0.0f, 0.0f),
 		&D3DXVECTOR3(0, 1, 0));
 
@@ -119,6 +119,9 @@ void GameScene::Draw()
 	effect->SetLigjtViewMatrix(lightView);
 	effect->SetLightProjectionMatrix(lightProjection);
 	effect->SetLightDirection(normalizeLight);
+
+	depthRenderer->SetViewMatrix(lightView);
+	depthRenderer->SetProjectionMatrix(lightProjection);
 
 	//Z値テクスチャに描画
 	depthMap->Begin();
@@ -129,7 +132,7 @@ void GameScene::Draw()
 	field->DrawDepth();
 	depthMap->End();
 
-	effect->SetDepthMap(depthMap->GetTexture());
+	pDevice->SetTexture(1, depthMap->GetTexture());
 	effect->CommitChanges();
 	//通常描画
 	for (auto&& obj : object)

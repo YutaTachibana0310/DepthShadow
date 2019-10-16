@@ -82,9 +82,9 @@ void BoardPolygon::Draw()
 	D3DMATERIAL9 matDef;
 	pDevice->GetMaterial(&matDef);
 
-	pDevice->SetMaterial(&material);
+	//pDevice->SetMaterial(&material);
 
-	pDevice->SetTexture(0, texture);
+	//pDevice->SetTexture(0, texture);
 
 	pDevice->SetStreamSource(0, vtxBuff, 0, sizeof(VERTEX_MATERIAL));
 
